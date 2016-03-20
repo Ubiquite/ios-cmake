@@ -75,6 +75,16 @@ set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden -isys
 set (CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
 set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")
 
+set(CMAKE_CXX_FLAGS_DEBUG_INIT "-g")
+set(CMAKE_CXX_FLAGS_RELEASE_INIT "-O3 -DNDEBUG")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT "-O2 -g -DNDEBUG")
+set(CMAKE_CXX_FLAGS_MINSIZEREL_INIT "-Os -DNDEBUG")
+
+set(CMAKE_C_FLAGS_DEBUG_INIT "-g")
+set(CMAKE_C_FLAGS_RELEASE_INIT "-O3 -DNDEBUG")
+set(CMAKE_C_FLAGS_RELWITHDEBINFO_INIT "-O2 -g -DNDEBUG")
+set(CMAKE_C_FLAGS_MINSIZEREL_INIT "-Os -DNDEBUG")
+
 set (CMAKE_PLATFORM_HAS_INSTALLNAME 1)
 set (CMAKE_SHARED_LIBRARY_CREATE_C_FLAGS "-dynamiclib -headerpad_max_install_names")
 set (CMAKE_SHARED_MODULE_CREATE_C_FLAGS "-bundle -headerpad_max_install_names")
@@ -144,9 +154,9 @@ set (CMAKE_OSX_SYSROOT ${CMAKE_IOS_SDK_ROOT} CACHE PATH "Sysroot used for iOS su
 # set the architecture for iOS 
 # NOTE: Currently both ARCHS_STANDARD_32_BIT and ARCHS_UNIVERSAL_IPHONE_OS set armv7 only, so set both manually
 if (${IOS_PLATFORM} STREQUAL "OS")
-	set (IOS_ARCH armv6 armv7)
+	set (IOS_ARCH arm64 armv7)
 else (${IOS_PLATFORM} STREQUAL "OS")
-	set (IOS_ARCH i386)
+	set (IOS_ARCH x86_64)
 endif (${IOS_PLATFORM} STREQUAL "OS")
 
 set (CMAKE_OSX_ARCHITECTURES ${IOS_ARCH} CACHE string  "Build architecture for iOS")
